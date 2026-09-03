@@ -5,11 +5,15 @@ import com.mira.homes.gui.HomeGuiService;
 import com.mira.homes.listener.HomeCommandBridgeListener;
 import com.mira.homes.particle.HomeParticleService;
 import net.ess3.api.IEssentials;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MiraHomesPlugin extends JavaPlugin {
+    private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacyAmpersand();
+    private static final String CHAT_PREFIX = "&5&lMira &8>> &r";
+
     @Override
     public void onEnable() {
         saveDefaultConfig();
@@ -31,7 +35,7 @@ public final class MiraHomesPlugin extends JavaPlugin {
         if (command != null) {
             command.setExecutor((sender, cmd, label, args) -> {
                 if (!(sender instanceof org.bukkit.entity.Player player)) {
-                    sender.sendMessage("MiraHomes can only be opened by a player.");
+                    sender.sendMessage(LEGACY.deserialize(CHAT_PREFIX + "&cMiraHomes can only be opened by a player."));
                     return true;
                 }
                 gui.open(player);
