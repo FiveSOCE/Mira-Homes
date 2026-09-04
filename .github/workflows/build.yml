@@ -4,7 +4,11 @@ on:
   push:
     branches: [main]
   pull_request:
+    branches: [main]
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -21,7 +25,21 @@ jobs:
       - name: Build
         run: gradle clean build --stacktrace
       - name: Upload plugin jar
+        if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: MiraHomes
-          path: build/libs/MiraHomes-*.jar
+          name: MiraHomes-0.1.1
+          path: build/libs/MiraHomes-0.1.1.jar
+          if-no-files-found: error
+      - name: Publish v0.1.1 release if missing
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view v0.1.1 >/dev/null 2>&1; then
+            gh release create v0.1.1 \
+              build/libs/MiraHomes-0.1.1.jar \
+              --target "${{ github.sha }}" \
+              --title "MiraHomes v0.1.1" \
+              --notes "Delegates successful home teleport visuals to MiraCosmetics, removes false-positive GUI selection particles and preserves EssentialsX as the sole home/teleport authority."
+          fi
