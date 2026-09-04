@@ -4,21 +4,26 @@ MiraHomes is the EssentialsX-backed player homes GUI for the Mira Paper server s
 
 ## Download
 
-[**Download MiraHomes v0.1.0**](https://github.com/FiveSOCE/Mira-Homes/releases/download/v0.1.0/MiraHomes-0.1.0.jar)
+[**Download MiraHomes v0.1.1**](https://github.com/FiveSOCE/Mira-Homes/releases/download/v0.1.1/MiraHomes-0.1.1.jar)
+
+[View All Releases](https://github.com/FiveSOCE/Mira-Homes/releases)
 
 ## Requirements / Dependencies
 
 - Paper 1.21.11
 - Java 21
 - EssentialsX 2.22.0 or newer
+- MiraCosmetics 0.1.1+ optional/recommended for teleport visuals
 
 ## How MiraHomes Works
 
-EssentialsX remains the source of truth for home creation, names, ownership, teleport behaviour and permissions. MiraHomes reads the player's live Essentials home list and renders it as a compact GUI. Each home appears as a White Bed named after the Essentials home, unused slots use the Mira grey-glass presentation, and the inventory expands/paginates as the number of homes grows.
+EssentialsX remains the source of truth for home creation, names, ownership, teleport behaviour, delays, cooldowns and permissions. MiraHomes reads the player's live Essentials home list and renders it as a compact paginated GUI.
 
-Clicking a home closes the GUI and dispatches Essentials' own `/home <name>` command, so Essentials teleport restrictions, delays and permissions remain intact. After selection, MiraHomes plays a configurable three-ring particle effect matching MiraWarps, with ring radius, density, height and duration controlled through `config.yml`.
+Clicking a home closes the GUI and dispatches Essentials' own namespaced `/home <name>` command. MiraHomes does not pretend that command acceptance means teleport success.
 
-The `/home` and `/homes` command bridge routes no-argument player access into the MiraHomes GUI while `/home <name>` remains the normal direct Essentials teleport flow.
+v0.1.1 removes the old local three-ring particle renderer. When MiraCosmetics is installed, its global Paper `PlayerTeleportEvent` listener renders the player's configured TELEPORT cosmetic only after Essentials actually performs a teleport. This also means direct `/home <name>` teleports get exactly the same visual path as GUI-selected homes.
+
+The `/home` and `/homes` command bridge routes no-argument player access into the MiraHomes GUI while `/home <name>` remains the normal direct Essentials flow.
 
 ## Commands
 
@@ -26,14 +31,20 @@ The `/home` and `/homes` command bridge routes no-argument player access into th
 | --- | --- | --- |
 | `/mhomes` | `mirahomes.use` | Opens the MiraHomes GUI. |
 | `/mhome` | `mirahomes.use` | Alias for `/mhomes`. |
-| `/home` | Essentials access + MiraHomes routing | Opens the MiraHomes GUI when used without a home name. |
-| `/homes` | Essentials access + MiraHomes routing | Opens the MiraHomes GUI. |
-| `/home <name>` | Essentials permissions | Remains EssentialsX's direct named-home teleport command. |
+| `/home` | Essentials access + MiraHomes routing | Opens the GUI when used without a home name. |
+| `/homes` | Essentials access + MiraHomes routing | Opens the GUI. |
+| `/home <name>` | Essentials permissions | Remains EssentialsX's named-home teleport command. |
 
-## Permissions
+## Visual Ownership
 
-| Permission | Default | What it does |
-| --- | --- | --- |
-| `mirahomes.use` | Everyone | Allows opening the MiraHomes GUI through the MiraHomes command surface. |
+MiraHomes owns the menu only. EssentialsX owns the teleport. MiraCosmetics owns successful teleport visuals.
 
-EssentialsX permissions continue to control creation and teleport access to the underlying homes.
+No teleport particles are spawned merely because a GUI command was accepted, preventing false-positive or duplicate effects when Essentials denies, delays or later completes a teleport.
+
+## Building
+
+```bash
+gradle clean build
+```
+
+The output JAR is created in `build/libs/`.
