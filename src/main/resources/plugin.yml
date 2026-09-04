@@ -1,10 +1,11 @@
 name: MiraHomes
-version: 0.1.0
+version: 0.1.1
 main: com.mira.homes.MiraHomesPlugin
 api-version: '1.21'
 authors: [FiveS]
 description: EssentialsX-backed GUI homes for the Mira plugin ecosystem.
 depend: [Essentials]
+softdepend: [MiraCosmetics]
 commands:
   mhomes:
     description: Open the MiraHomes GUI.
