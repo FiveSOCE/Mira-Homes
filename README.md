@@ -4,7 +4,7 @@ MiraHomes is the EssentialsX-backed player homes GUI for the Mira Paper server s
 
 ## Download
 
-[**Download MiraHomes v0.1.1**](https://github.com/FiveSOCE/Mira-Homes/releases/download/v0.1.1/MiraHomes-0.1.1.jar)
+[**Download MiraHomes v0.1.1**](https://github.com/FiveSOCE/Mira-Homes/releases/download/v0.1.2/MiraHomes-0.1.2.jar)
 
 [View All Releases](https://github.com/FiveSOCE/Mira-Homes/releases)
 
