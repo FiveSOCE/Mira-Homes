@@ -110,7 +110,7 @@ public final class HomeGuiService {
         ItemStack item = new ItemStack(configMaterial("gui.filler-material", Material.GRAY_STAINED_GLASS_PANE));
         ItemMeta meta = item.getItemMeta();
         meta.displayName(Component.text(" ").decoration(TextDecoration.ITALIC, false));
-        meta.setEnchantmentGlintOverride(true);
+        // Legacy Paper has no custom glint override item component.
         item.setItemMeta(meta);
         return item;
     }
