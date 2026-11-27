@@ -43,7 +43,7 @@ public final class MiraHomesPlugin extends JavaPlugin {
             });
         }
 
-        getLogger().info("MiraHomes v" + getPluginMeta().getVersion()
+        getLogger().info("MiraHomes v" + getDescription().getVersion()
                 + " enabled. Successful home teleports are visualized by MiraCosmetics when installed.");
     }
 }
