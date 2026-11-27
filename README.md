@@ -1,21 +1,34 @@
 # MiraHomes
 
-## Download
+## Version-specific downloads
 
-**Latest compatibility release: v0.1.2**
+| Paper target | Java | Final JAR | Download |
+| --- | --- | --- | --- |
+| **1.18.2** | 17 | `MiraHomes_1.18.2.jar` | [Legacy release](https://github.com/FiveSOCE/Mira-Homes/releases/tag/dev-1.18.2) |
+| **1.21.11–26.2** | 21 baseline; modern server may require Java 25 | `MiraHomes_1.21.11-26.2.jar` | [Modern release](https://github.com/FiveSOCE/Mira-Homes/releases/tag/compat-modern-1.21.11-26.2) |
 
-[**Download MiraHomes-0.1.2.jar**](https://github.com/FiveSOCE/Mira-Homes/releases/download/v0.1.2/MiraHomes-0.1.2.jar)
+The named release assets become available after CI succeeds. Full gameplay testing and intermediate Paper 1.19–1.21.10 compatibility are not yet certified.
 
-[View all releases](https://github.com/FiveSOCE/Mira-Homes/releases)
+[Legacy source](https://github.com/FiveSOCE/Mira-Homes/tree/compat/1.18.2) · [Modern source](https://github.com/FiveSOCE/Mira-Homes) · [All releases](https://github.com/FiveSOCE/Mira-Homes/releases)
 
-MiraHomes is the EssentialsX-backed player homes GUI for the Mira Paper server suite. It gives players a clean visual selector for their existing Essentials homes without creating or maintaining a second home database.
+MiraHomes provides a paginated home-selection GUI for existing EssentialsX home locations. It delegates all underlying teleport logic, warmup, permissions, cooldown and storage to EssentialsX.
 
-## Requirements / Dependencies
+## Dependencies
 
-- Paper 1.21.11
-- Java 21
-- EssentialsX 2.22.0 or newer
-- MiraCosmetics 0.1.1+ optional/recommended for teleport visuals
+- **Required:** Appropriate Paper and Java runtime and a compatible **EssentialsX** installation. The hard plugin dependency is `Essentials`.
+- **Optional:** MiraCosmetics for teleport effects when a teleport actually succeeds.
+- **Not required:** MiraCore or Vault.
+- Back up EssentialsX home data before version changes and remove duplicate MiraHomes JARs.
+
+## Commands and permissions
+
+| Command | Permission | Function |
+| --- | --- | --- |
+| `/mhomes`, `/mhome` | `mirahomes.use` (everyone) | Open home GUI |
+| `/home`, `/homes` | EssentialsX permissions | Open GUI when invoked without a home name |
+| `/home <name>` | EssentialsX permissions | Direct EssentialsX home teleport |
+
+MiraHomes declares `mirahomes.use`, default everyone. Named-home permissions are controlled by EssentialsX.
 
 ## How MiraHomes Works
 
