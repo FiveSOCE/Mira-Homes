@@ -4,10 +4,10 @@
 
 | Paper target | Java | Final JAR | Download |
 | --- | --- | --- | --- |
-| **1.18.2** | 17 | `MiraHomes_1.18.2.jar` | [Legacy release](https://github.com/FiveSOCE/Mira-Homes/releases/tag/dev-1.18.2) |
-| **1.21.11–26.2** | 21 baseline; modern server may require Java 25 | `MiraHomes_1.21.11-26.2.jar` | [Modern release](https://github.com/FiveSOCE/Mira-Homes/releases/tag/compat-modern-1.21.11-26.2) |
+| **1.18.2** | 17 | `MiraHomes_1.18.2.jar` | [Download 1.18.2 JAR](https://github.com/FiveSOCE/Mira-Homes/releases/download/dev-1.18.2/MiraHomes_1.18.2.jar) |
+| **1.21.11–26.2** | 21 baseline; modern server may require Java 25 | `MiraHomes_1.21.11-26.2.jar` | [Download modern JAR](https://github.com/FiveSOCE/Mira-Homes/releases/download/compat-modern-1.21.11-26.2/MiraHomes_1.21.11-26.2.jar) |
 
-The named release assets become available after CI succeeds. Full gameplay testing and intermediate Paper 1.19–1.21.10 compatibility are not yet certified.
+Both version-specific JARs have passed CI and their release assets have been verified. Full gameplay testing and intermediate Paper 1.19–1.21.10 compatibility are not yet certified.
 
 [Legacy source](https://github.com/FiveSOCE/Mira-Homes/tree/compat/1.18.2) · [Modern source](https://github.com/FiveSOCE/Mira-Homes) · [All releases](https://github.com/FiveSOCE/Mira-Homes/releases)
 
